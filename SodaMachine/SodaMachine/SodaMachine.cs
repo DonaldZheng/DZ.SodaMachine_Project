@@ -66,10 +66,6 @@ namespace SodaMachineProj
                 RootBeer rootBeer = new RootBeer();
                 _inventory.Add(rootBeer);
             }
-          
-
-           
-            
 
         }
         //Method to be called to start a transaction.
@@ -171,12 +167,14 @@ namespace SodaMachineProj
         {
 
         }
-        //Takes in a list of coins to returnt he total value of the coins as a double.
+        //Takes in a list of coins to return the total value of the coins as a double.
         private double TotalCoinValue(List<Coin> payment)
         {
+            
             //payment is a list of coins
             //we want to look at all the coins in that list and add their values together into a new variable
             //then return that variable
+
         }
         //Puts a list of coins into the soda machines register.
         private void DepositCoinsIntoRegister(List<Coin> coins)
