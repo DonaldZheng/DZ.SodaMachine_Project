@@ -128,13 +128,45 @@ namespace SodaMachineProj
         //If the change cannot be made, return null.
         private List<Coin> GatherChange(double changeValue)
         {
+            List<Coin> change;
+            Coin vendingChange = new Coin();
+                while (changeValue >= .25)
+            {
+                    if (change =)
+                    {
+                    // do you have --> register has coin ("quarter") REGISTERHASCOIN
+                    // register // GerCoinFromRegister
+                    // input = input - 0.25
+                    }
+                while (changeValue >= .10)
+                    if ()
+                    {
+                
+                    }
+                while (changeValue >= .05)
+                    if ()
+                    {
 
+                    }
+                while (changeValue >= .01)
+                    if ()
+                    {
+
+                    }
+            }
         }
         //Reusable method to check if the register has a coin of that name.
         //If it does have one, return true.  Else, false.
         private bool RegisterHasCoin(string name)
         {
-            
+            foreach (Coin coin in _register)
+            {
+                if (name == coin.Name)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         //Reusable method to return a coin from the register.
         //Returns null if no coin can be found of that name.
@@ -142,20 +174,16 @@ namespace SodaMachineProj
         {
             foreach (Coin coinName in _register)
             {
-                if ()
+                if (name == coinName.Name)
                 {
-
+                    return coinName;
                 }
-                else
-                {
-                    return null;
-                }
-                    
             }
-           
+            return null;
         }
-        //Takes in the total payment amount and the price of can to return the change amount.
-        private double DetermineChange(double totalPayment, double canPrice)
+           
+            //Takes in the total payment amount and the price of can to return the change amount.
+            private double DetermineChange(double totalPayment, double canPrice)
         {
             double totalChange = totalPayment - canPrice;
             return totalChange;
