@@ -132,41 +132,35 @@ namespace SodaMachineProj
         }
         //Reusable method to check if the register has a coin of that name.
         //If it does have one, return true.  Else, false.
-        private bool RegisterHasCoin(string quarters, string dimes, string nickels, string pennies)
+        private bool RegisterHasCoin(string name)
         {
-            if (quarters = 20)
-            {
-                return true;
-            }
-            if (dimes = 10)
-            {
-                return true;
-            }
-            if (nickels = 20)
-            {
-                return true;
-            }
-            if (pennies = 50)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            
         }
         //Reusable method to return a coin from the register.
         //Returns null if no coin can be found of that name.
         private Coin GetCoinFromRegister(string name)
         {
-            return null;
+            foreach (Coin coinName in _register)
+            {
+                if ()
+                {
+
+                }
+                else
+                {
+                    return null;
+                }
+                    
+            }
+           
         }
         //Takes in the total payment amount and the price of can to return the change amount.
         private double DetermineChange(double totalPayment, double canPrice)
         {
             double totalChange = totalPayment - canPrice;
             return totalChange;
+
+
             //method might return 0/negative value come back when we call it 
             
         }
