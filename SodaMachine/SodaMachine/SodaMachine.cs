@@ -128,32 +128,43 @@ namespace SodaMachineProj
         //If the change cannot be made, return null.
         private List<Coin> GatherChange(double changeValue)
         {
+            // if change value > 25
+            // remove quarter from the register
+            // add it to temp list 
+            // minus changeValue - 25
+
+            // do you have --> register has coin ("quarter") REGISTERHASCOIN
+            // register // GetCoinFromRegister
+            // input = input - 0.25
             List<Coin> change;
             Coin vendingChange = new Coin();
-                while (changeValue >= .25)
+                while (changeValue > 0)
             {
-                    if (change =)
-                    {
-                    // do you have --> register has coin ("quarter") REGISTERHASCOIN
-                    // register // GerCoinFromRegister
-                    // input = input - 0.25
-                    }
-                while (changeValue >= .10)
-                    if ()
-                    {
-                
-                    }
-                while (changeValue >= .05)
-                    if ()
+                    if (changeValue > .25)
                     {
 
                     }
-                while (changeValue >= .01)
-                    if ()
+                while (changeValue > 0)
+                {
+                    if (changeValue > .10)
                     {
 
                     }
-            }
+                while (changeValue > 0)
+                    {
+                     if (changeValue > .05)
+                     {
+
+                     }
+
+                while (changeValue > 0)
+                        {
+                     if (changeValue > .01)
+                     {
+
+                     }
+
+                }
         }
         //Reusable method to check if the register has a coin of that name.
         //If it does have one, return true.  Else, false.
