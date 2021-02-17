@@ -170,6 +170,13 @@ namespace SodaMachineProj
         //Takes in a list of coins to return the total value of the coins as a double.
         private double TotalCoinValue(List<Coin> payment)
         {
+            double paymentAdded = 0;
+            foreach (Coin coin in payment)
+            {
+                paymentAdded += coin.Value;
+            }
+            return paymentAdded;
+            
             
             //payment is a list of coins
             //we want to look at all the coins in that list and add their values together into a new variable
