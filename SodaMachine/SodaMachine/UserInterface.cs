@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SodaMachineProj
 {
@@ -25,7 +22,7 @@ namespace SodaMachineProj
                 OutputText("Please step aside to allow another customer to make a selection");
                 return false;
             }
-        
+
         }
         //For printing out an error message for user to see.  Has built in console clear
         public static void DisplayError(string error)
@@ -51,7 +48,7 @@ namespace SodaMachineProj
                 Console.WriteLine("Enter -5- when finishd to deposit payment");
                 int.TryParse(Console.ReadLine(), out int selection);
                 validatedSelection = ValidateCoinChoice(selection);
-               
+
             }
             while (!validatedSelection.Item1);
 
@@ -107,11 +104,11 @@ namespace SodaMachineProj
         public static void PrintOptions(List<Can> SodaOptions)
         {
 
-           List<Can> uniqueCans = GetUniqueCans(SodaOptions);
-           foreach(Can can in uniqueCans)
-           {
+            List<Can> uniqueCans = GetUniqueCans(SodaOptions);
+            foreach (Can can in uniqueCans)
+            {
                 Console.WriteLine($"\t{can.Name}");
-           }
+            }
         }
         //Takes in the inventory of sodas to provide the user with an interface for their selection.
         public static string SodaSelection(List<Can> SodaOptions)
@@ -131,14 +128,14 @@ namespace SodaMachineProj
             } while (!validatedSodaSelection.Item1);
 
             return validatedSodaSelection.Item2;
-           
+
         }
         //Uses a tuple to validate the soda selection.
-        private static Tuple<bool,string> ValidateSodaSelection(int input, List<Can> uniqueCans)
+        private static Tuple<bool, string> ValidateSodaSelection(int input, List<Can> uniqueCans)
         {
-            if(input >= 0 && input <= uniqueCans.Count)
+            if (input >= 0 && input <= uniqueCans.Count)
             {
-                return Tuple.Create(true, uniqueCans[input-1].Name);
+                return Tuple.Create(true, uniqueCans[input - 1].Name);
             }
             else
             {
@@ -179,7 +176,7 @@ namespace SodaMachineProj
         public static void DiplayTotalValueOfCoins(List<Coin> coinsToTotal)
         {
             double totalValue = 0;
-            foreach(Coin coin in coinsToTotal)
+            foreach (Coin coin in coinsToTotal)
             {
                 totalValue += coin.Value;
             }
@@ -189,7 +186,7 @@ namespace SodaMachineProj
         public static void EndMessage(string sodaName, double changeAmount)
         {
             Console.WriteLine($"Enjoy your {sodaName}.");
-            if(changeAmount > 0)
+            if (changeAmount > 0)
             {
                 Console.WriteLine($"Despensing ${changeAmount}");
             }

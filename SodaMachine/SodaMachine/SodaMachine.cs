@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SodaMachineProj
 {
@@ -93,6 +89,15 @@ namespace SodaMachineProj
         //Gets a soda from the inventory based on the name of the soda.
         private Can GetSodaFromInventory(string nameOfSoda)
         {
+            for (int i = 0; i < _inventory.Count; i++)
+            {
+                Can can = _inventory[i];
+                if (can.Name.Equals(nameOfSoda))
+                {
+                    return can;
+                }
+            }
+            return null;
 
         }
 
@@ -105,22 +110,7 @@ namespace SodaMachineProj
         //If the payment does not meet the cost of the soda: despense payment back to the customer.
         private void CalculateTransaction(List<Coin> payment, Can chosenSoda, Customer customer)
         {
-            if (payment > chosenSoda.Price)
-            {
 
-            }
-            if (payment > chosenSoda)
-            {
-
-            }
-            if (payment = chosenSoda)
-            {
-
-            }
-            if (payment != chosenSoda)
-            {
-
-            }
         }
         //Takes in the value of the amount of change needed.
         //Attempts to gather all the required coins from the sodamachine's register to make change.
@@ -128,43 +118,73 @@ namespace SodaMachineProj
         //If the change cannot be made, return null.
         private List<Coin> GatherChange(double changeValue)
         {
-            // if change value > 25
+            //while 
+            // if change value > .25
             // remove quarter from the register
             // add it to temp list 
-            // minus changeValue - 25
+            // minus changeValue - .25
 
             // do you have --> register has coin ("quarter") REGISTERHASCOIN
             // register // GetCoinFromRegister
             // input = input - 0.25
-            List<Coin> change;
-            Coin vendingChange = new Coin();
-                while (changeValue > 0)
-            {
-                    if (changeValue > .25)
-                    {
 
+            List<Coin> change = new List<Coin>();
+            Coin vendingChange = new Coin();
+
+            // *****ask about this tommorrow******
+
+            while (changeValue > 0)
+            {
+                if (changeValue > .25)
+                {
+                    // if register has coin quarter then we go into if statement
+
+                    if (RegisterHasCoin("Quarter"))
+                    {
+                        Coin coin = GetCoinFromRegister("Quarter");
+                        change.Add(coin);
+                        changeValue = changeValue - .25;
                     }
+                }
+            }
+
+            while (changeValue > 0)
+            {
+                if (changeValue > .10)
+                {
+                    if (RegisterHasCoin("Dime"))
+                    {
+                        Coin coin = GetCoinFromRegister("Dime");
+                        change.Add(coin);
+                        changeValue = changeValue - .10;
+                    }
+                }
+            }
+            while (changeValue > 0)
+            {
+                if (changeValue > .05)
+                {
+                    if (RegisterHasCoin("Nickel"))
+                    {
+                        Coin coin = GetCoinFromRegister("Nickel");
+                        change.Add(coin);
+                        changeValue = changeValue - .05;
+                    }
+                }
                 while (changeValue > 0)
                 {
-                    if (changeValue > .10)
+                    if (changeValue > .01)
                     {
-
-                    }
-                while (changeValue > 0)
-                    {
-                     if (changeValue > .05)
-                     {
-
-                     }
-
-                while (changeValue > 0)
+                        if (RegisterHasCoin("Penny"))
                         {
-                     if (changeValue > .01)
-                     {
-
-                     }
-
+                            Coin coin = GetCoinFromRegister("Penny");
+                            change.Add(coin);
+                            changeValue = changeValue - .01;
+                        }
+                    }
                 }
+
+            }
         }
         //Reusable method to check if the register has a coin of that name.
         //If it does have one, return true.  Else, false.
@@ -187,21 +207,22 @@ namespace SodaMachineProj
             {
                 if (name == coinName.Name)
                 {
+                    _register.Remove(coinName);
                     return coinName;
                 }
             }
             return null;
         }
-           
-            //Takes in the total payment amount and the price of can to return the change amount.
-            private double DetermineChange(double totalPayment, double canPrice)
+
+        //Takes in the total payment amount and the price of can to return the change amount.
+        private double DetermineChange(double totalPayment, double canPrice)
         {
             double totalChange = totalPayment - canPrice;
             return totalChange;
 
 
             //method might return 0/negative value come back when we call it 
-            
+
         }
         //Takes in a list of coins to return the total value of the coins as a double.
         private double TotalCoinValue(List<Coin> payment)
@@ -212,8 +233,8 @@ namespace SodaMachineProj
                 paymentAdded += coin.Value;
             }
             return paymentAdded;
-            
-            
+
+
             //payment is a list of coins
             //we want to look at all the coins in that list and add their values together into a new variable
             //then return that variable

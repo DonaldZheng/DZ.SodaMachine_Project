@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SodaMachineProj
+﻿namespace SodaMachineProj
 {
     class Program
     {
@@ -13,7 +7,7 @@ namespace SodaMachineProj
             //Simulation simulation = new Simulation();
             //simulation.Simulate();
             SodaMachine soda = new SodaMachine();
-            
+
 
 
 

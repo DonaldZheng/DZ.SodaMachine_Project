@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SodaMachineProj
+﻿namespace SodaMachineProj
 {
-    class Quarter:Coin
+    class Quarter : Coin
     {
         //Member Variables (Has A)
 

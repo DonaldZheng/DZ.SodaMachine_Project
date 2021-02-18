@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SodaMachineProj
+﻿namespace SodaMachineProj
 {
-    class RootBeer:Can
+    class RootBeer : Can
     {
         //Member Variables (Has A)
 
