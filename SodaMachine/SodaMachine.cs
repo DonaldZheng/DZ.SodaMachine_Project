@@ -77,15 +77,21 @@ namespace SodaMachineProj
         }
 
         //This is the main transaction logic think of it like "runGame".  This is where the user will be prompted for the desired soda.
-        //grab the desired soda from the inventory.
-        //get payment from the user.
-        //pass payment to the calculate transaction method to finish up the transaction based on the results.
         private void Transaction(Customer customer)
         {
-            // need to get a soda from inentory, that method needs a string it will return a call
+            // need to get a soda from inventory, that method needs a string it will return a call
             string customerCanSelection = "";
+
+            //grab the desired soda from the inventory
             Can canChoice = GetSodaFromInventory(customerCanSelection);
-            customer.GatherCoinsFromWallet(canChoice);
+
+            //get payment from the user.
+            List <Coin> payment = customer.GatherCoinsFromWallet(canChoice);
+
+
+            //pass payment to the calculate transaction method to finish up the transaction based on the results.
+            CalculateTransaction(payment, canChoice, customer); // customerCanSelection cannot go into parameters because it's a string 
+
         }
 
         //Gets a soda from the inventory based on the name of the soda.
