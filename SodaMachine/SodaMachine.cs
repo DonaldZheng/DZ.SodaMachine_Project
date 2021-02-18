@@ -112,10 +112,10 @@ namespace SodaMachineProj
         {
             List<Coin> paymentMethod = new List<Coin>();
             Coin payments = new Coin();
-            if (payment > chosenSoda.Price)
-            {
+            //if (payment > chosenSoda.Price)
+            //{
             
-            }
+            //}
         }
         //Takes in the value of the amount of change needed.
         //Attempts to gather all the required coins from the sodamachine's register to make change.
