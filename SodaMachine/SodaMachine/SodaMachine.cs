@@ -116,38 +116,45 @@ namespace SodaMachineProj
         //Attempts to gather all the required coins from the sodamachine's register to make change.
         //Returns the list of coins as change to despense.
         //If the change cannot be made, return null.
+
+        //while 
+        // if change value > .25
+        // remove quarter from the register
+        // add it to temp list 
+        // minus changeValue - .25
+
+        // do you have --> register has coin ("quarter") REGISTERHASCOIN
+        // register // GetCoinFromRegister
+        // input = input - 0.25
         private List<Coin> GatherChange(double changeValue)
         {
-            //while 
-            // if change value > .25
-            // remove quarter from the register
-            // add it to temp list 
-            // minus changeValue - .25
-
-            // do you have --> register has coin ("quarter") REGISTERHASCOIN
-            // register // GetCoinFromRegister
-            // input = input - 0.25
-
             List<Coin> change = new List<Coin>();
             Coin vendingChange = new Coin();
-
-            // *****ask about this tommorrow******
 
             while (changeValue > 0)
             {
                 if (changeValue > .25)
                 {
-                    // if register has coin quarter then we go into if statement
-
                     if (RegisterHasCoin("Quarter"))
                     {
                         Coin coin = GetCoinFromRegister("Quarter");
-                        change.Add(coin);
-                        changeValue = changeValue - .25;
+
+                        if (coin != null)       // if coin exisit 
+                        {
+                            change.Add(coin);   // add coin to change
+                            changeValue = changeValue - .25; // take it out of the total change and remove from register 
+                        }
+                        if (changeValue == 0)
+                        {
+                            return change;
+                        }
+                        if (coin == null || changeValue < .25) // if the machine is done spitting out .25 it will go to the next coin 
+                        {
+                            break;
+                        }
                     }
                 }
             }
-
             while (changeValue > 0)
             {
                 if (changeValue > .10)
@@ -155,37 +162,79 @@ namespace SodaMachineProj
                     if (RegisterHasCoin("Dime"))
                     {
                         Coin coin = GetCoinFromRegister("Dime");
-                        change.Add(coin);
-                        changeValue = changeValue - .10;
-                    }
-                }
-            }
-            while (changeValue > 0)
-            {
-                if (changeValue > .05)
-                {
-                    if (RegisterHasCoin("Nickel"))
-                    {
-                        Coin coin = GetCoinFromRegister("Nickel");
-                        change.Add(coin);
-                        changeValue = changeValue - .05;
+
+                        if (coin != null)       // if coin exisit 
+                        {
+                            change.Add(coin);   // add coin to change
+                            changeValue = changeValue - .1; // take it out of the total change
+                        }
+                        if (changeValue == 0)
+                        {
+                            return change;
+                        }
+                        if (coin == null || changeValue < .1) // if the machine is done spitting out .25 it will go to the next coin 
+                        {
+                            break;
+                        }
                     }
                 }
                 while (changeValue > 0)
                 {
-                    if (changeValue > .01)
+                    if (changeValue > .05)
                     {
-                        if (RegisterHasCoin("Penny"))
+                        if (RegisterHasCoin("Nickel"))
                         {
-                            Coin coin = GetCoinFromRegister("Penny");
-                            change.Add(coin);
-                            changeValue = changeValue - .01;
+                            Coin coin = GetCoinFromRegister("Nickel");
+
+                            if (coin != null)       // if coin exisit 
+                            {
+                                change.Add(coin);   // add coin to change
+                                changeValue = changeValue - .05; // take it out of the total change
+                            }
+                            if (changeValue == 0)
+                            {
+                                return change;
+                            }
+                            if (coin == null || changeValue < .05) // if the machine is done spitting out .25 it will go to the next coin 
+                            {
+                                break;
+                            }
                         }
                     }
-                }
+                    while (changeValue > 0)
+                    {
+                        if (changeValue > .01)
+                        {
+                            if (RegisterHasCoin("Penny"))
+                            {
+                                Coin coin = GetCoinFromRegister("Penny");
 
+                                if (coin != null)       // if coin exisit 
+                                {
+                                    change.Add(coin);   // add coin to change
+                                    changeValue = changeValue - .01; // take it out of the total change
+                                }
+                                if (changeValue == 0)
+                                {
+                                    return change;
+                                }
+                                if (coin == null || changeValue < .01) // if the machine is done spitting out .25 it will go to the next coin 
+                                {
+                                    break;
+
+                                }
+
+                            }
+                        }
+
+                        
+                    }
+                    
+                }
+                
             }
         }
+
         //Reusable method to check if the register has a coin of that name.
         //If it does have one, return true.  Else, false.
         private bool RegisterHasCoin(string name)
