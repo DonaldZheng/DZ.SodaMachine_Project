@@ -201,6 +201,7 @@ namespace SodaMachineProj
                             }
                         }
                     }
+                }
                     while (changeValue > 0)
                     {
                         if (changeValue > .01)
@@ -223,16 +224,16 @@ namespace SodaMachineProj
                                     break;
 
                                 }
-
+                                
                             }
+
                         }
 
-                        
-                    }
-                    
-                }
-                
+                   
+                    }   
             }
+            return change;
+            
         }
 
         //Reusable method to check if the register has a coin of that name.
