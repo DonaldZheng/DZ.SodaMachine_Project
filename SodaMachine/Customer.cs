@@ -38,7 +38,7 @@ namespace SodaMachineProj
         //Takes in a can object to add to the customers backpack.
         public void AddCanToBackpack(Can purchasedCan)
         {
-
+            Backpack.cans.Add(purchasedCan);
         }
     }
 }

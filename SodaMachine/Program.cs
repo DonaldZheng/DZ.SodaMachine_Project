@@ -8,7 +8,7 @@
             //simulation.Simulate();
             SodaMachine soda = new SodaMachine();
             soda.FillRegister();
-            soda.GatherChange(.35);
+            soda.GatherChange(.55);
 
 
 

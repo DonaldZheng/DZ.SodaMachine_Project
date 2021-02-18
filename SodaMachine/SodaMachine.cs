@@ -87,6 +87,7 @@ namespace SodaMachineProj
             Can canChoice = GetSodaFromInventory(customerCanSelection);
             customer.GatherCoinsFromWallet(canChoice);
         }
+
         //Gets a soda from the inventory based on the name of the soda.
         private Can GetSodaFromInventory(string nameOfSoda)
         {
@@ -110,12 +111,20 @@ namespace SodaMachineProj
         //If the payment does not meet the cost of the soda: despense payment back to the customer.
         private void CalculateTransaction(List<Coin> payment, Can chosenSoda, Customer customer)
         {
-            List<Coin> paymentMethod = new List<Coin>();
-            Coin payments = new Coin();
-            //if (payment > chosenSoda.Price)
-            //{
+            double totalValue = TotalCoinValue(payment); // takes the list of payments/coins and makes it a double 
+            double totalChange = DetermineChange(totalValue, chosenSoda.Price); 
+            List<Coin> ChangeList = GatherChange(totalChange);
+
+            if (totalValue > chosenSoda.Price && total)
+            {
+                
+            }
+            if (totalValue == chosenSoda.Price)
+            {
             
-            //}
+            }
+           
+           
         }
         //Takes in the value of the amount of change needed.
         //Attempts to gather all the required coins from the sodamachine's register to make change.
@@ -164,7 +173,7 @@ namespace SodaMachineProj
                     Console.WriteLine("Vending Machine does not have enough change to dispense");
                     return null;
                 }
-                changeValue = Math.Round(changeValue, 2);
+                changeValue = Math.Round(changeValue, 2); // Nevin said to add this part to not have repeating decimals 
             }
 
             return change;
@@ -197,6 +206,8 @@ namespace SodaMachineProj
                 }
             }
             return null;
+
+            
         }
 
         //Takes in the total payment amount and the price of can to return the change amount.
