@@ -26,12 +26,12 @@ namespace SodaMachineProj
                 Dime dime = new Dime();
                 Coins.Add(dime);
             }
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= 20; i++)
             {
                 Nickel nickel = new Nickel();
                 Coins.Add(nickel);
             }
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= 50; i++)
             {
                 Penny penny = new Penny();
                 Coins.Add(penny);
