@@ -119,13 +119,9 @@ namespace SodaMachineProj
 
         //while 
         // if change value > .25
-        // remove quarter from the register
+        // remove quarter from the register  do you have --> register has coin ("quarter") REGISTERHASCOIN
         // add it to temp list 
-        // minus changeValue - .25
-
-        // do you have --> register has coin ("quarter") REGISTERHASCOIN
-        // register // GetCoinFromRegister
-        // input = input - 0.25
+        // // input = input - 0.25
         private List<Coin> GatherChange(double changeValue)
         {
             List<Coin> change = new List<Coin>();
@@ -222,18 +218,13 @@ namespace SodaMachineProj
                                 if (coin == null || changeValue < .01) // if the machine is done spitting out .25 it will go to the next coin 
                                 {
                                     break;
-
-                                }
-                                
+                                }    
                             }
 
                         }
-
-                   
                     }   
             }
-            return change;
-            
+            return change;   
         }
 
         //Reusable method to check if the register has a coin of that name.
