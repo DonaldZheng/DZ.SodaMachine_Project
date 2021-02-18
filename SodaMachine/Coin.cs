@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SodaMachine
+﻿namespace SodaMachineProj
 {
     class Coin
     {
         //Member Variables (Has A)
         protected double value;
         public string Name;
+        //public List<string> coinValue;
 
         public double Value
         {
@@ -22,6 +17,16 @@ namespace SodaMachine
 
         }
         //Constructor (Spawner)
+        public Coin()
+        {
+            //added new, if not right delete:
+            //coinValue = new List<string>();
+            //coinValue.Add("Quarter");
+            //coinValue.Add("Dime");
+            //coinValue.Add("Nickel");
+            //coinValue.Add("Penny");
+
+        }
 
         //Member Methods (Can Do)
     }

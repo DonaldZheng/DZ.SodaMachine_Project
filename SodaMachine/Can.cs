@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SodaMachine
+﻿namespace SodaMachineProj
 {
     abstract class Can
     {
@@ -13,8 +7,8 @@ namespace SodaMachine
         public string Name;
 
         public double Price
-        { 
-            get 
+        {
+            get
             {
                 return price;
             }

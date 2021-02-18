@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SodaMachine
+namespace SodaMachineProj
 {
     class Simulation
     {
@@ -29,7 +25,7 @@ namespace SodaMachine
                 willProceed = UserInterface.ContinuePrompt("Continue to next transaction?");
                 Console.Clear();
             }
-           
+
         }
     }
 }

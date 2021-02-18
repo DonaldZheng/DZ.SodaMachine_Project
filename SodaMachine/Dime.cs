@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SodaMachine
+﻿namespace SodaMachineProj
 {
-    class Dime:Coin
+    class Dime : Coin
     {
         //Member Variables (Has A)
 
