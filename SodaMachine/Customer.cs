@@ -31,7 +31,7 @@ namespace SodaMachineProj
             return null;
         }
         //Takes in a list of coin objects to add into the customers wallet.
-        public void AddCoinsIntoWallet(List<Coin> coinsToAdd)
+        public void AddCoinsIntoWallet(List<Coin> coinsToAdd) // basically the same as the one in the soda machine class 
         {
             foreach (Coin coin in coinsToAdd)
             {

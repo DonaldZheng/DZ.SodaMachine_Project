@@ -95,7 +95,9 @@ namespace SodaMachineProj
             {
                 if (_inventory[i].Name == nameOfSoda)
                 {
-                    return _inventory[i];
+                    _inventory.RemoveAt(i);
+                    return _inventory[i]; // name is a string so return the [i]?
+                     // unreachable code here if i put after return
                 }
                 
             }
@@ -105,23 +107,41 @@ namespace SodaMachineProj
         //This is the main method for calculating the result of the transaction.
         //It takes in the payment from the customer, the soda object they selected, and the customer who is purchasing the soda.
         //This is the method that will determine the following:
+
         //If the payment is greater than the price of the soda, and if the sodamachine has enough change to return: Despense soda, and change to the customer.
+
         //If the payment is greater than the cost of the soda, but the machine does not have ample change: Despense payment back to the customer.
-        //If the payment is exact to the cost of the soda:  Despense soda.
-        //If the payment does not meet the cost of the soda: despense payment back to the customer.
+
+        //If the payment is exact to the cost of the soda:  Despense soda: DONE
+
+        //If the payment does not meet the cost of the soda: despense payment back to the customer. DONE 
         private void CalculateTransaction(List<Coin> payment, Can chosenSoda, Customer customer)
         {
             double totalValue = TotalCoinValue(payment); // takes the list of payments/coins and makes it a double 
-            double totalChange = DetermineChange(totalValue, chosenSoda.Price); 
-            List<Coin> ChangeList = GatherChange(totalChange);
+            double totalChange = DetermineChange(totalValue, chosenSoda.Price);
+            List<Coin> change = GatherChange(totalChange);
 
-            if (totalValue > chosenSoda.Price && total)
+            if (totalValue > chosenSoda.Price )
             {
-                
+                if (change != null)
+                {
+                    GetSodaFromInventory(chosenSoda.Name);
+                    customer.AddCanToBackpack(chosenSoda);
+                    customer.AddCoinsIntoWallet(change);
+                }
+                else
+                {
+                    customer.AddCoinsIntoWallet(payment);
+                }
             }
-            if (totalValue == chosenSoda.Price)
+                if (totalValue == chosenSoda.Price)
             {
-            
+                DepositCoinsIntoRegister(payment); // deposit coin in register 
+                customer.AddCanToBackpack(chosenSoda); // give soda to add to backpack
+            }
+            else  
+            {
+                customer.AddCoinsIntoWallet(payment);
             }
            
            
@@ -195,19 +215,25 @@ namespace SodaMachineProj
         //Reusable method to return a coin from the register.
         //Returns null if no coin can be found of that name.
         // not allow to change collection in for each loop 
-        private Coin GetCoinFromRegister(string name)
+
+        //foreach (Coin coinName in _register)
+        
+        //    if (name == coinName.Name)
+        //   _register.Remove(coinName);     // will give error for loop 
+        //    return coinName;
+   
+        //return null;
+        private Coin GetCoinFromRegister(string name) // USE A FOR LOOP INSTEAD OF FOREACH - Nevin 
         {
-            foreach (Coin coinName in _register)
+            for (int i = 0; i < _register.Count; i++)
             {
-                if (name == coinName.Name)
+                if (_register[i].Name == name) 
                 {
-                    _register.Remove(coinName);     // will give error for loop 
-                    return coinName;
+                    _register.RemoveAt(i);
+                    return _register[i];
                 }
             }
             return null;
-
-            
         }
 
         //Takes in the total payment amount and the price of can to return the change amount.
