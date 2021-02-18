@@ -92,14 +92,13 @@ namespace SodaMachineProj
         {
             for (int i = 0; i < _inventory.Count; i++)
             {
-                Can can = _inventory[i];
-                if (can.Name.Equals(nameOfSoda))
+                if (_inventory[i].Name == nameOfSoda)
                 {
-                    return can;
+                    return _inventory[i];
                 }
+                
             }
             return null;
-
         }
 
         //This is the main method for calculating the result of the transaction.
@@ -111,7 +110,12 @@ namespace SodaMachineProj
         //If the payment does not meet the cost of the soda: despense payment back to the customer.
         private void CalculateTransaction(List<Coin> payment, Can chosenSoda, Customer customer)
         {
-
+            List<Coin> paymentMethod = new List<Coin>();
+            Coin payments = new Coin();
+            if (payment > chosenSoda.Price)
+            {
+            
+            }
         }
         //Takes in the value of the amount of change needed.
         //Attempts to gather all the required coins from the sodamachine's register to make change.
@@ -151,7 +155,6 @@ namespace SodaMachineProj
                 }
                 else if (changeValue > .01 && RegisterHasCoin("Penny"))
                 {
-
                     Coin coin = GetCoinFromRegister("Penny");
                     change.Add(coin);   // add coin to change
                     changeValue = changeValue - .01; // take it out of the total change
@@ -159,9 +162,11 @@ namespace SodaMachineProj
                 else
                 {
                     Console.WriteLine("Vending Machine does not have enough change to dispense");
+                    return null;
                 }
                 changeValue = Math.Round(changeValue, 2);
             }
+
             return change;
         }
 
