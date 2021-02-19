@@ -20,9 +20,24 @@ namespace SodaMachineProj
         //Takes in the selected can for price reference
         //Will need to get user input for coins they would like to add.
         //When all is said and done this method will return a list of coin objects that the customer will use a payment for their soda.
-        public List<Coin> GatherCoinsFromWallet(Can selectedCan)
+        public List<Coin> GatherCoinsFromWallet(Can selectedCan) //maybe bring in BeginTransaction here to start??
         {
-            return null;
+            bool willProceed = true;
+            List<Coin> money = new List<Coin>();
+            while (willProceed)
+            {
+                string coinName = UserInterface.CoinSelection(selectedCan, money);
+                if (coinName == "Done")
+                {
+                    break;
+                }
+                Coin coinToAdd = GetCoinFromWallet(coinName);
+                if (coinToAdd != null)
+                {
+                    money.Add(coinToAdd);
+                }
+            }
+            return money;
         }
         //Returns a coin object from the wallet based on the name passed into it.
         //Returns null if no coin can be found
@@ -32,6 +47,7 @@ namespace SodaMachineProj
             {
                 if (Wallet.Coins[i].Name == coinName)
                 {
+                                                              // make a return coin object here 
                     Wallet.Coins.RemoveAt(i);
                     return Wallet.Coins[i];
                 }
