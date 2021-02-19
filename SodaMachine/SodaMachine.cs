@@ -80,8 +80,8 @@ namespace SodaMachineProj
         private void Transaction(Customer customer)
         {
             // need to get a soda from inventory, that method needs a string it will return a call
-            string customerCanSelection = "";
-
+            string customerCanSelection = UserInterface.SodaSelection(_inventory);
+       
             //grab the desired soda from the inventory
             Can canChoice = GetSodaFromInventory(customerCanSelection);
 
