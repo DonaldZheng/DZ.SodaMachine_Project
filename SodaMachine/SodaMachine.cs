@@ -79,21 +79,14 @@ namespace SodaMachineProj
         //This is the main transaction logic think of it like "runGame".  This is where the user will be prompted for the desired soda.
         private void Transaction(Customer customer)
         {
-            // need to get a soda from inventory, that method needs a string it will return a call
-            string customerCanSelection = UserInterface.SodaSelection(_inventory);
-       
-            //grab the desired soda from the inventory
-            Can canChoice = GetSodaFromInventory(customerCanSelection);
-
-            //get payment from the user.
-            List <Coin> payment = customer.GatherCoinsFromWallet(canChoice);
-
-
-            //pass payment to the calculate transaction method to finish up the transaction based on the results.
-            CalculateTransaction(payment, canChoice, customer); // customerCanSelection cannot go into parameters because it's a string 
-
+            string customerCanSelection = UserInterface.SodaSelection(_inventory);  // need to get a soda from inventory, that method needs a string it will return a call
+            Can canChoice = GetSodaFromInventory(customerCanSelection);//grab the desired soda from the inventory
+            List<Coin> payment = customer.GatherCoinsFromWallet(canChoice);//get payment from the user.
+            CalculateTransaction(payment, canChoice, customer); // customerCanSelection cannot go into parameters because it's a string & pass payment to the calculate transaction method to finish up the transaction based on the results.
+            UserInterface.OutputText("The transaction was sucessfully completed"); // display this after paying for the drink | why does not console.write work here? 
+            Console.ReadLine();
         }
-
+   
         //Gets a soda from the inventory based on the name of the soda.
         private Can GetSodaFromInventory(string nameOfSoda)
         {
@@ -129,16 +122,18 @@ namespace SodaMachineProj
 
             if (totalValue > chosenSoda.Price )
             {
-                if (change != null)
-                {
-                    GetSodaFromInventory(chosenSoda.Name);
-                    customer.AddCanToBackpack(chosenSoda);
-                    customer.AddCoinsIntoWallet(change);
-                }
-                else
+                if (change == null)
                 {
                     customer.AddCoinsIntoWallet(payment);
                 }
+                else
+                {
+                    DepositCoinsIntoRegister(payment); // deposit the customer payment in the register
+                    customer.AddCoinsIntoWallet(change); // give the coins to the customer 
+                    customer.AddCanToBackpack(chosenSoda); // put the soda in the customer's backpack
+                    UserInterface.EndMessage(chosenSoda.Name, totalValue); // **** have to call this End Message to end the simulation ***** - brent comments' Has to be in Calcuate Transaction?
+                }
+
             }
                 if (totalValue == chosenSoda.Price)
             {
